@@ -1,8 +1,10 @@
 from itertools import product
+from time import monotonic
 import random
 import numpy as np
 import copy
 import math
+
 x1min = -30
 x1max = 0
 x2min = 15
@@ -481,6 +483,9 @@ else:
         f4 = N - d
         #print(f4)
         #print(f3)
+        r = monotonic() + 10     #
+        while r > monotonic():   #виконання програми 10 секунд
+            d = d + d
         sad = ((yy1-ySr1)**2+(yy2-ySr2)**2+(yy3-ySr3)**2+(yy4-ySr4)**2+(yy5-ySr5)**2+(yy6-ySr6)**2+(yy7-ySr7)**2+(yy8-ySr8)**2+ (yy9-ySr9)**2+(yy10-ySr10)**2+(yy11-ySr11)**2+(yy12-ySr12)**2+(yy13-ySr13)**2+(yy14-ySr14)**2+(yy15-ySr15)**2)*(m/(N-d))
         Fp = sad/sb
         #print("d1=", round(d1,2), "d2=", round(d2,2), "d3=", round(d3,2), "d4=", round(d4,2), "d5=", round(sb,2))
@@ -501,3 +506,4 @@ else:
             print("Fp=",round(Fp,2),"<Ft",Ft,"Рівняння адекватно оригіналу")
         print("y=",b[0],"+",b[1],"*x1+",b[2],"*x2+",b[3],"*x3+",b[4],"*x1*x2+",b[5],"*x1*x3",b[6],"*x2*x3",b[7],"*x1*x2*x3",b[8],"*x1^2",b[9],"*x2^2",b[10],"*x3^2")
         print("Адекватна модель рівняння регресії")
+        print("Кількість усіх значимих коефіціентів:\n", d)
